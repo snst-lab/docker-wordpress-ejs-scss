@@ -1,0 +1,81 @@
+@charset "UTF-8";
+@import "mixin","config";
+
+//--------------------------------------------------
+// 基本サイズ
+//--------------------------------------------------
+$pc-width:$pcCompSize + 0px;
+$sp-width:$spCompSize + 0px;
+$break-point:$breakPoint + 0px;
+
+$xl-width: 1440px;
+$l-width: 1280px;
+$m-width: 960px;
+$i-width: 768px;
+$s-width: 640px;
+
+$mediaQuery: (
+  "sp": "screen and (max-width:#{$s-width}) and (orientation: portrait)",
+  "s": "screen and (max-width: #{$s-width})",
+  "over-s": "screen and (min-width:#{$s-width+1px})",
+  "i": "screen and (max-width:#{$i-width})",
+  "over-i": "screen and (min-width:#{$i-width +1px})",
+  "m": "screen and (max-width:#{$m-width})",
+  "over-m": "screen and (min-width:#{$m-width+1px})",
+  "l": "screen and (max-width:#{$l-width})",
+  "over-l": "screen and (min-width:#{$l-width+1px})",
+  "xl": "screen and (max-width:#{$xl-width})",
+  "over-xl": "screen and (min-width:#{$xl-width+1px})"
+);
+//--------------------------------------------------
+// メディアクエリ選択
+//--------------------------------------------------
+@mixin mq($media) {
+  @media #{map-get($mediaQuery, $media)} {
+    @content;
+  }
+}
+
+//--------------------------------------------------
+// PC/SP
+//--------------------------------------------------
+@mixin pc {
+  @media screen and (min-width:#{$break-point + 1px}) {
+    @content;
+  }
+}
+
+@mixin sp {
+  @media screen and (max-width:#{$break-point}) {
+    @content;
+  }
+}
+
+.pc {
+  @include sp {
+    display: none;
+  }
+}
+.sp {
+  @include pc {
+    display: none;
+  }
+}
+
+@mixin font_pc($size: 16px, $height: 1, $space: 100, $weight: 400) {
+  @include pc {
+    font-size: $size;
+    line-height: $height;
+    letter-spacing: $space/1000 + em;
+    font-weight: $weight;
+  }
+}
+
+@mixin font_sp($size: 28px, $height: 1, $space: 100, $weight: 400) {
+  @include sp {
+    font-size: $size;
+    line-height: $height;
+    letter-spacing: $space/1000 + em;
+    font-weight: $weight;
+  }
+}

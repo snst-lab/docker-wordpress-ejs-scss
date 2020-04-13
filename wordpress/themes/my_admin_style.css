@@ -1,0 +1,91 @@
+.adminMessage {
+	background: rgb(255, 253, 238);
+	border: 1px solid #ccc;
+	padding: 14px;
+	margin: 10px 0;
+}
+.adminMessage_headline {
+	background: #f9e972;
+	font-size: 14px;
+	padding: 5px 10px;
+	margin-left: -22px;
+	position: relative;
+	z-index: 1;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+.adminMessage_headline:after {
+	content: "";
+	position: absolute;
+	z-index: 1;
+	display: block;
+	border: 4px solid #c1b556;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+	bottom: -8px;
+	left: 0;
+}
+.adminMessage_headline:nth-of-type( n + 2) {
+	margin-top: 20px;
+}
+.adminMessage_text {
+	margin: 0 0 1em;
+}
+.adminMessage_text > b {
+	color: #f00;
+	font-weight: normal;
+}
+.adminMessage_list {
+	margin: 0;
+	list-style: outside disc;
+	padding-left: 1.6em;
+}
+.adminMessage_list > li {
+	margin: 5px 0 0;
+}
+.adminMessage_list > li > b {
+	color: #f00;
+	font-weight: normal;
+}
+.adminMessage_list > li:first-child {
+	margin: 0;
+}
+.acf_postbox .field textarea {
+	min-height: 0;
+}
+.acf_wysiwyg iframe {
+	min-height: 600px;
+}
+#tax_typediv {
+	display: none;
+}
+.user-admin-color-wrap {
+	display: none;
+}
+.user-comment-shortcuts-wrap {
+	display: none;
+}
+.user-admin-bar-front-wrap {
+	display: none;
+}
+.user-rich-editing-wrap {
+	display: none;
+}
+.user-syntax-highlighting-wrap {
+	display: none;
+}
+.user-language-wrap {
+	display: none;
+}
+.user-first-name-wrap {
+	display: none;
+}
+.user-last-name-wrap {
+	display: none;
+}
+.user-url-wrap {
+	display: none;
+}
+.user-description-wrap {
+	display: none;
+}

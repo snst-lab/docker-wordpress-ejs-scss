@@ -1,0 +1,86 @@
+
+//-------------------
+// fadeSlider
+//-------------------
+@mixin fadeSlider2($src1, $src2, $period: 10s) {
+    animation: fadeSlider2 $period ease-out infinite;
+    @keyframes fadeSlider2 {
+      0% {
+        background-image: url($src1);
+        opacity: 1;
+      }
+      24% {
+        background-image: url($src1);
+        opacity: 0;
+      }
+      26% {
+        background-image: url($src2);
+        opacity: 0;
+      }
+      50% {
+        background-image: url($src2);
+        opacity: 1;
+      }
+      74% {
+        background-image: url($src2);
+        opacity: 0;
+      }
+      76% {
+        background-image: url($src1);
+        opacity: 0;
+      }
+      100% {
+        background-image: url($src1);
+        opacity: 1;
+      }
+    }
+  }
+  
+  @mixin fadeSlider3($src1, $src2, $src3, $period: 15s) {
+    animation: fadeSlider3 $period ease-out infinite;
+    @keyframes fadeSlider3 {
+      0% {
+        background-image: url($src1);
+        opacity: 1;
+      }
+      16% {
+        background-image: url($src1);
+        opacity: 0;
+      }
+      18% {
+        background-image: url($src2);
+        opacity: 0;
+      }
+      33% {
+        background-image: url($src2);
+        opacity: 1;
+      }
+      49% {
+        background-image: url($src2);
+        opacity: 0;
+      }
+      51% {
+        background-image: url($src3);
+        opacity: 0;
+      }
+      66% {
+        background-image: url($src3);
+        opacity: 1;
+      }
+      82% {
+        background-image: url($src3);
+        opacity: 0;
+      }
+      84% {
+        background-image: url($src1);
+        opacity: 0;
+      }
+      100% {
+        background-image: url($src1);
+        opacity: 1;
+      }
+    }
+  }
+  
+  
+  

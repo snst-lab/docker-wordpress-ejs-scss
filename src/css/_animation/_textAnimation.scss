@@ -1,0 +1,81 @@
+
+
+//-------------------
+// textflow
+//-------------------
+.textflow {
+    opacity: 0;
+    overflow: hidden;
+    > span {
+      opacity: 0;
+      display: inline-block;
+      transform: translateY(2em) rotateY(270deg);
+    }
+  }
+  .textflow.inview--on, .inview--on .textflow {
+    opacity: 1;
+    > span {
+      opacity: 1;
+  
+      @for $i from 1 through 15 {
+        &:nth-of-type(#{$i}) {
+          animation-name: textflow;
+          animation-duration: #{$i * 100}ms;
+          animation-timing-function: ease-out;
+          animation-fill-mode: forwards;
+        }
+      }
+    }
+  }
+  @keyframes textflow {
+    0% {
+      transform: translateY(2em) rotateY(270deg);
+    }
+    100% {
+      transform: translateY(0px) rotateY(0);
+    }
+  }
+  
+  //-------------------
+  // textcycle
+  //-------------------
+  .textcycle {
+    overflow: hidden;
+    > span {
+      display: inline-block;
+      transform: translateY(2em);
+    }
+  }
+  .textcycle.hover--on, .hover--on .textcycle {
+    > span {
+      @for $i from 1 through 15 {
+        &:nth-of-type(#{$i}) {
+          animation-name: textcycle;
+          animation-delay: #{$i * $i * 5}ms;
+          animation-duration: 2500ms;
+          animation-timing-function: ease;
+          animation-fill-mode: normal;
+          animation-iteration-count: infinite;
+        }
+      }
+    }
+  }
+  @keyframes textcycle {
+    0% {
+      transform: translateY(2em);
+    }
+    20% {
+      transform: translateY(0em);
+    }
+    70% {
+      transform: translateY(0em);
+    }
+    90% {
+      transform: translateY(-2em);
+    }
+    100% {
+      transform: translateY(-2em);
+    }
+  }
+  
+  

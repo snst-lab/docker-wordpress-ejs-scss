@@ -1,0 +1,22 @@
+#Ignore node modules
+**/node_modules/*
+**/package-lock.json
+
+#Ignore working directory
+.data/*
+
+#Ignore mysql data directory
+mysql/data/*
+mysql/init.d/restore/*
+
+#Ignore wp-config.php
+# **/wp-config.php
+
+#Ignore vscode config file includes ftp account
+# .vscode
+
+#Ignore enviroment file for docker-compose.yml
+#.env
+
+#Ignore distribution
+dist/**

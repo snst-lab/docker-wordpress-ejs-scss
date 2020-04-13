@@ -1,0 +1,48 @@
+<meta charset="UTF-8" />
+<% if (modifier === '404') { %>
+<meta name="robots" content="noindex"/>
+<% } %>
+<title><%- meta.page[basename].title %></title>
+<meta name="description" content="<%- meta.page[basename].description %>" />
+<meta name="keywords" content="<%- meta.page[basename].keywords %>" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no" />
+<!--[if lt IE 9]>
+  <script src="/vendor/html5shiv.js"></script>
+  <script src="/vendor/selectivizr-min.js"></script>
+<![endif]-->
+<link rel="shortcut icon" href="/img/favicon/icon-192x192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon-180x180.png" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ja_JP" />
+<meta property="og:site_name" content="<%- meta.page.home.title %>" />
+<meta property="og:description" content="<%- meta.page[basename].description %>" />
+<% if(meta.ogUrl !=''){ %>
+<meta property="og:url" content="<%- meta.ogUrl %>" />
+<% } %> <% if(meta.ogImage !=''){ %>
+<meta property="og:image" content="<%- meta.ogImage %>" />
+<% } %> <% if(meta.twitter.id !=''){ %>
+<meta name="twitter:site" content="<%- meta.twitter.id %>" />
+<% } %> <% if(meta.facebook.id !=''){ %>
+<meta name="fb:app_id" content="<%- meta.facebook.id %>" />
+<% } %>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="/css/<%- basename %>/pc.css"
+  media="screen and (min-width:<%- +css.breakPoint+1 %>px)"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="/css/<%- basename %>/sp.css"
+  media="screen and (max-width:<%- +css.breakPoint %>px)"
+/>
+<script src="/js/liquidly/dist/index.js"></script>
+<script>
+  liquidly.init();
+</script>
+<script src="/js/polyfill.js"></script>
+
+

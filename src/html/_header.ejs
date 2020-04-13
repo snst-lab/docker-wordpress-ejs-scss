@@ -1,0 +1,91 @@
+<% if (typeof modifier === 'undefined') { var modifier = ''; } %>
+<header class="mainv__hide">
+  <h1 class="hed_logo lq__element--fixed">
+    <% if (modifier === 'home') { %>
+    <a href="#">
+    <% } else { %>
+    <a href="/">
+    <% } %>
+      <img class="icon" src="/img/common/head_logo_icon.png" alt="Kentech" />
+      <img class="letter" src="/img/common/head_logo_letter.png" alt="株式会社ケンテック" />
+    </a>
+  </h1>
+    <article class="pc lq__element--fixed">
+      <div class="hed_menu">
+        <% if (modifier === 'home') { %>
+          <a class="home" href="#">
+            ホーム
+            <div class="current"><span></span></div>
+          </a>
+        <% } else { %>
+          <a class="home" href="/">
+            ホーム
+            <div class="current"><span></span></div>
+          </a>
+        <% } %>
+          <a class="service" href="<%- meta.page.service.link %>">
+            事業内容
+            <div class="current"><span></span></div>
+          </a>
+          <a class="company" href="<%- meta.page.company.link %>">
+            会社情報
+            <div class="current"><span></span></div>
+          </a>
+          <a  class="recruit" href="<%- meta.page.recruit.link %>">
+            採用情報
+            <div class="current"><span></span></div>
+          </a>
+      </div>
+      <a class="hed_contact" href="<%- meta.page.contact.link %>">
+        <img src="/img/common/head_contact.png" alt="お問い合わせ" />
+      </a>
+    </article>
+
+    <article class="sp lq__element--fixed">
+      <div class="hed_nav"></div>
+
+      <div class="hamb_btn">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+
+      <ul class="hed_menu _1">
+        <li>
+            <a href="<%- meta.page.service.link %>">
+              事業内容
+            </a>
+            <p>
+              <a href="<%- meta.page.service.link %>#category">カテゴリ一覧</a>
+              <a href="<%- meta.page.service.link %>#maker">メーカー名一覧</a>
+            </p>
+        </li>
+        <li>
+          <a href="<%- meta.page.company.link %>">
+            会社情報
+          </a>
+          <p>
+            <a href="<%- meta.page.company.link %>#message">代表メッセージ</a>
+            <a href="<%- meta.page.company.link %>#abstract">会社概要</a>
+            <a href="<%- meta.page.company.link %>#history">沿革</a>
+            <a href="<%- meta.page.company.link %>#network">事業所一覧</a>
+          </p>
+        </li>
+
+        <li class="contact">
+          <a href="<%- meta.page.contact.link %>">お問い合わせ</a>
+        </li>
+
+        <li class="recruit">
+          <a href="<%- meta.page.recruit.link %>">
+             採用情報
+          </a>
+          <p>
+            <a href="<%- meta.page.recruit.link %>#voice">先輩社員の声</a>
+            <a href="<%- meta.page.recruit.link %>#career">中途採用</a>
+            <a href="<%- meta.page.recruit.link %>#new">新卒採用</a>
+        </li>
+      </ul>
+    </article>
+</header>
+

@@ -1,0 +1,118 @@
+@mixin glitch($name, $intensity, $width, $height, $top, $left) {
+    $steps: $intensity;
+  
+    @keyframes #{$name}-anim-0 {
+      0% {
+        clip-path: polygon(0% 0%, 0 100%, 0 100%, 0 5%, 100% 5%, 100% 7%, 0 7%, 0 100%, 100% 100%, 100% 0%);
+      }
+      15% {
+        clip-path: polygon(0% 0%, 0 100%, 0 100%, 0 98%, 100% 98%, 100% 99%, 0 99%, 0 100%, 100% 100%, 100% 0%);
+      }
+      100% {
+        clip-path: polygon(0% 0%, 0 100%, 0 100%, 0 3%, 100% 3%, 100% 4%, 0 4%, 0 100%, 100% 100%, 100% 0%);
+      }
+    }
+    @keyframes #{$name}-anim-1 {
+      0% {
+        top: $top + 1 + px;
+        left: $left - 1 + px;
+        opacity: 0;
+      }
+      10% {
+        top: $top - 1 px;
+        left: $left + 1 + px;
+        opacity: 1;
+      }
+      30% {
+        top: $top + 1 + px;
+        left: $left - 1 + px;
+        opacity: 1;
+      }
+      40% {
+        top: $top - 1 px;
+        left: $left + 1 + px;
+        opacity: 1;
+      }
+      100% {
+        top: $top - 1 px;
+        left: $left + 1 + px;
+        opacity: 1;
+      }
+    }
+    @keyframes #{$name}-anim-2 {
+      0% {
+        top: $top + 1 + px;
+        left: $left - 1 + px;
+        opacity: 1;
+      }
+      10% {
+        top: $top - 1 px;
+        left: $left + 1 + px;
+        opacity: 1;
+      }
+      20% {
+        top: $top + 1 + px;
+        left: $left - 1 + px;
+        opacity: 1;
+      }
+      30% {
+        top: $top - 1 px;
+        left: $left + 1 + px;
+        opacity: 1;
+      }
+      100% {
+        top: $top - 1 px;
+        left: $left + 1 + px;
+        opacity: 0;
+      }
+    }
+  
+    > img {
+      position: absolute;
+      top: $top + px;
+      left: $left + px;
+    }
+  
+    > img:nth-child(1) {
+      animation: #{$name}-anim-0 2s infinite linear;
+      @include ie {
+        animation: none;
+      }
+    }
+    > img:nth-child(2) {
+      z-index: -1;
+      animation: #{$name}-anim-1 0.5s infinite linear alternate;
+      filter: invert(100%) drop-shadow(-2px -2px 0px red);
+      @include ie {
+        display: none;
+        animation: none;
+      }
+    }
+    > img:nth-child(3) {
+      z-index: -1;
+      animation: #{$name}-anim-2 0.5s infinite linear alternate-reverse;
+      filter: invert(100%) drop-shadow(2px 2px 0px blue);
+      @include ie {
+        display: none;
+        animation: none;
+      }
+    }
+  }
+  .glitch {
+    img:nth-of-type(2) {
+      display: none;
+    }
+    img:nth-of-type(3) {
+      display: none;
+    }
+  }
+  .glitch.inview--on, .inview--on .glitch{
+    @include glitch("glitch-component", 20, 0, 0, 0, 0);
+    img:nth-of-type(2) {
+      display: block;
+    }
+    img:nth-of-type(3) {
+      display: block;
+    }
+  }
+  

@@ -1,0 +1,72 @@
+version: '3.7'
+
+services:
+  wordpress:
+    image: wordpress:${WP_VERSION}
+    ports:
+      - ${PORT}:80
+    environment:
+      - WORDPRESS_DB_HOST=mysql:3306
+      - WORDPRESS_DB_NAME=${DB_NAME}
+      - WORDPRESS_DB_USER=${DB_USER}
+      - WORDPRESS_DB_PASSWORD=${DB_USERPASS}
+    volumes:
+      - ../dist:/var/www/html
+      - ../wordpress/php.ini:/usr/local/etc/php/php.ini
+      # - ../cron/crontab:/var/spool/cron/crontabs/root
+      # - ../etc/letsencrypt:/etc/letsencrypt/ # Edit for your environment
+    depends_on:
+      - phpmyadmin
+    networks:
+      default:
+    restart: ${RESTART}
+    tty: true
+
+  mysql:
+    image: mariadb:latest
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOTPASS}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_USERPASS}
+      - MYSQL_ALLOW_EMPTY_PASSWORD="no"
+      - TZ="Asia/Tokyo"
+    # command: >
+      # bash -c 'mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci'
+    volumes:
+      - data-volume:/var/lib/mysql
+      - ../mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      default:
+    restart: ${RESTART}
+    tty: true
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - ${PORT_MYADMIN}:80
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=${DB_USER}
+      - PMA_PASSWORD=${DB_USERPASS}
+    volumes:
+      - ../phpmyadmin/php.ini:/usr/local/etc/php/php.ini
+    depends_on:
+      - mysql
+    networks:
+      default:
+    restart: ${RESTART}
+    tty: true
+
+networks:
+  default:
+    name: ${PROJECT_NAME}
+    driver: bridge
+    
+volumes:
+  data-volume:
+    name: ${PROJECT_NAME}
+    driver: local
+

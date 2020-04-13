@@ -1,0 +1,40 @@
+{
+    "page": {
+        "404": {
+            "title": "404エラー | ページが見つかりません",
+            "description": "",
+            "keywords": ""
+        },
+        "home": {
+            "title": "トップページのタイトル",
+            "description": "トップページのディスクリプション",
+            "keywords": "トップページのキーワード"
+        },
+        "contact": {
+            "title": "コンタクトページのタイトル",
+            "description": "コンタクトぺージのディスクリプション",
+            "keywords": "コンタクトページのキーワード",
+            "link": "/contact/"
+        },
+        "privacy": {
+            "title": "プライバシーポリシーページのタイトル",
+            "description": "プライバシーポリシーぺージのディスクリプション",
+            "keywords": "プライバシーポリシーページのキーワード",
+            "link": "/privacy/"
+        }
+    },
+    "ogUrl": "",
+    "ogImage": "",
+    "twitter": {
+        "id": ""
+    },
+    "facebook": {
+        "id": ""
+    },
+    "link": {
+        "email":"",
+        "tel": "",
+        "appstore": "",
+        "googleplay": ""
+    }
+}

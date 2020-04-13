@@ -1,0 +1,76 @@
+version: "3.7"
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - ${PORT}:80
+      # - ${PORT}:443
+    volumes:
+      - ../dist:/usr/share/nginx/html
+      - ../nginx/conf.d/http.conf:/etc/nginx/conf.d/default.conf
+      # - ../cron/crontab:/var/spool/cron/crontabs/root
+      # - /etc/letsencrypt:/etc/letsencrypt/ # Edit for your environment
+    depends_on:
+      - php
+    networks:
+      - default
+    restart: ${RESTART}
+    tty: true
+
+  php:
+    image: php:7.2-fpm
+    ports:
+      - 9000:9000
+    volumes:
+      - ../dist:/var/www/html
+      - ../php/php.ini:/usr/local/etc/php/php.ini
+    networks:
+      - default
+    restart: ${RESTART}
+    tty: true
+
+
+  mysql:
+    image: mariadb:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOTPASS}
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_USERPASS}
+      - MYSQL_ALLOW_EMPTY_PASSWORD='no'
+      - TZ='Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ../mysql/data:/var/lib/mysql
+      # - ../mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    expose:
+      - "3306"
+    ports:
+      - 3306:3306
+    networks:
+      - default
+    restart: ${RESTART}
+    tty: true
+
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=${DB_ROOTPASS}
+    volumes:
+      - ../phpmyadmin/php.ini:/usr/local/etc/php/php.ini
+    depends_on:
+      - mysql
+    ports:
+      - ${PORT_MYADMIN}:80
+    networks:
+      - default
+    restart: ${RESTART}
+    tty: true
+
+networks:
+  default:
+    driver: bridge

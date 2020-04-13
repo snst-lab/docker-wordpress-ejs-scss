@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+.popup {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.3s;
+    z-index: $header-zindex + 1;
+    > .overlay {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0);
+    }
+    > img {
+      @include abs(0, 0, 0, 0);
+      margin: auto;
+      width: 60vw;
+      transform-origin: 50% 50%;
+      transform: translateY(-5vh);
+      transition: 1s;
+  
+      @include sp {
+        width: 147vw;
+        margin-left: -25vw;
+      }
+    }
+    &.active {
+      pointer-events: auto;
+      opacity: 1;
+      > .overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      > img {
+        transform: translateY(0vh);
+      }
+    }
+  }
+  
+  
+  
+  

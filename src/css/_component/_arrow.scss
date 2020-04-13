@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+@mixin arrow__triangle($size: 11px, $rotate: 0deg, $color: $green) {
+  width: 0;
+  height: 0;
+  font-size: $size;
+  border-style: solid;
+  border-width: 1em 0 1em 1.6em;
+  border-color: transparent transparent transparent $color;
+  transform-origin: center center;
+  transform: rotate($rotate);
+}
+
+@mixin arrow__circle($size: 56px, $bgcolor: white, $arrowcolor: $green, $rotate: 0deg, $triangle: 0) {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  background: $bgcolor;
+  box-shadow: 0px 0px $size * 0.1 #888;
+  top: -$size/2;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  transition: 0.5s;
+  transform: rotate($rotate);
+  &::before {
+    @if $triangle == 1 {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: $size/6 0 $size/6 $size/5;
+      border-color: transparent transparent transparent $arrowcolor;
+      transition: 0.5s;
+
+      left:50%;
+      top:50%;
+      color: $arrowcolor;
+      transform: scaleX(0.95) translate(-50%,-50%) 
+    } @else {
+      content: ">";
+      display: block;
+      position: absolute;
+      font-size: $size * 0.5;
+
+      left:45%;
+      top:48%;
+      @include ie{
+        left:45%;
+        top:55%;
+      }
+      color: $arrowcolor;
+      transform: scaleX(0.5) translate(-50%,-50%) 
+    }
+  }
+}
+
+/**
+* スクロールリンク等用矢印
+*/
+@mixin arrow__bar($color: #333) {
+  display: block;
+  position: absolute;
+  transform-origin: center;
+  transform: rotate(90deg);
+  z-index: 1;
+
+  > a {
+    display: inline;
+    color: $color;
+    vertical-align: bottom;
+  }
+
+  > span {
+    display: inline-block;
+    height: 1px;
+    background: $color;
+    width: 100px;
+    margin-left: 10px;
+    vertical-align: middle;
+    animation: arrow__bar 1s ease alternate infinite;
+    transform-origin: left center;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      background: $color;
+      left: 90px;
+      top: -4px;
+      width: 10px;
+      height: 1px;
+      transform: rotate(45deg);
+    }
+
+    @keyframes arrow__bar {
+      0% {
+        transform: scaleX(1);
+      }
+      100% {
+        transform: scaleX(1.1);
+      }
+    }
+  }
+}
+
+@mixin scrollToTop($size: 56px, $color-bg: white, $color-arrow: $green) {
+  cursor: pointer;
+  position: absolute;
+  background: $color-bg;
+  box-shadow: 0px 0px 5px #888;
+  top: -$size/2;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  transition: 0.5s;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: $size * 0.38;
+    left: $size * 0.33;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 $size/6 $size/5 $size/6;
+    border-color: transparent transparent $color-arrow transparent;
+    transition: 0.5s;
+    transform: scaleY(0.8);
+  }
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: $size * 0.38 + 2px;
+    left: $size * 0.33;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 $size/6 $size/5 $size/6;
+    border-color: transparent transparent $color-bg transparent;
+    transition: 0.5s;
+    transform: scaleY(0.8);
+  }
+  &:hover {
+    background: $color-arrow;
+    transition: 0.5s;
+    &::before {
+      border-color: transparent transparent $color-bg transparent;
+      transition: 0.5s;
+    }
+    &::after {
+      border-color: transparent transparent $color-arrow transparent;
+      transition: 0.5s;
+    }
+  }
+}

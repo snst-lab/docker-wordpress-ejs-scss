@@ -1,0 +1,64 @@
+<% if (typeof modifier === 'undefined') { var modifier = ''; } %>
+<footer>
+    <h2 class="foot_logo">
+      <% if (modifier === 'home') { %>
+        <a href="#">
+      <% } else { %>
+        <a href="/">
+      <% } %>
+         株式会社ケンテック
+        </a>
+    </h2>
+
+    <p class="foot_address">
+      本社所在地<br>
+      〒939-2701 富山県富山市婦中町 西本郷 436番地52<br>
+      TEL.076-424-2806 &nbsp; FAX.076-424-2807
+    </p>
+
+    <figure class="foot_badge">
+      <img src="/img/common/foot_badge.png" alt="KES">
+    </figure>
+
+      <ul class="foot_menu pc">
+        <li>
+            <a href="<%- meta.page.service.link %>">
+              事業内容
+            </a>
+            <p>
+              <a href="<%- meta.page.service.link %>#category">カテゴリ一覧</a>
+              <a href="<%- meta.page.service.link %>#maker">メーカー名一覧</a>
+            </p>
+        </li>
+        <li>
+          <a href="<%- meta.page.company.link %>">
+            会社情報
+          </a>
+          <p>
+            <a href="<%- meta.page.company.link %>#message">代表メッセージ</a>
+            <a href="<%- meta.page.company.link %>#abstract">会社概要</a>
+            <a href="<%- meta.page.company.link %>#history">沿革</a>
+            <a href="<%- meta.page.company.link %>#network">事業所一覧</a>
+          </p>
+        </li>
+        <li>
+          <a href="<%- meta.page.recruit.link %>">
+            採用情報
+          </a>
+          <p>
+            <a href="<%- meta.page.recruit.link %>#voice">先輩社員の声</a>
+            <a href="<%- meta.page.recruit.link %>#career">中途採用</a>
+            <a href="<%- meta.page.recruit.link %>#new">新卒採用</a>
+        </li>
+        <li class="contact">
+          <a href="<%- meta.page.contact.link %>">お問い合わせ</a>
+        </li>
+      </ul>
+
+    <div class="foot_copyright">
+      Copyright(c) 2019 KENTECH Co.Ltd All right reserved.
+    </div>
+
+    <a class="scrollToTop" href="#"></a>
+</footer>
+<!-- /.pageFooter -->

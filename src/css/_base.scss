@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+//--------------------------------------------------
+// 基本数値
+//--------------------------------------------------
+$header-zindex: 100;
+$header-height: 110px;
+$header-height-min: 80px;
+$header-height-sp: 100px;
+
+//--------------------------------------------------
+// カラー定義
+//--------------------------------------------------
+$html-bg: white;
+$orange: #eb6001;
+$yellow: #ff9031;
+$red: #fd5958;
+$navy: #465b8c;
+$green: #6eba40;
+$brown: #311708;
+$gray: #232323;
+$mid-gray: #272727;
+$light-gray: #4a4a4a;
+$black: #171717;
+
+.red {
+  color: $red;
+}
+.yellow {
+  color: $yellow;
+}
+.green {
+  color: $green;
+}
+.orange {
+  color: $orange;
+}
+
+//-----------------------------------
+// フォント定義
+//-----------------------------------
+$noto: "Noto Sans JP", sans-serif;
+$kosugi: "Kosugi", sans-serif;
+$hiragino: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", sans-serif;
+$yu-gothic: "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック体", YuGothic, sans-serif;
+$kozuka: "小塚ゴシック Pro", "Kozuka Gothic Pro", sans-serif;
+$oswald: "Oswald", sans-serif;
+$prompt: "Prompt", sans-serif;
+
+$gothic-font: "Noto Sans JP", "Kosugi", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "游ゴシック Medium",
+  "Yu Gothic Medium", "游ゴシック体", YuGothic, "小塚ゴシック Pro", "Kozuka Gothic Pro", "メイリオ", Meiryo, Osaka,
+  "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+$mincho-font: "游明朝", "Yu Mincho", "YuMincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E",
+  "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+$en-font: $prompt;
+
+.gothic {
+  font-family: $gothic-font;
+}
+
+.mincho {
+  font-family: $mincho-font;
+}
+
+.en {
+  font-family: $en-font;
+}

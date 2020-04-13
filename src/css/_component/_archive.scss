@@ -1,0 +1,195 @@
+@charset "UTF-8";
+
+//月別・カテゴリ別アーカイブ
+@include pc {
+  .archive {
+    margin-top: -10px;
+    .ttl {
+      @include font(20px, 40px, 50);
+      @include clamp(1);
+      border-bottom: 1px solid $red;
+      color: $red;
+
+      width: 300px;
+    }
+
+    dl {
+      width: 300px;
+      min-height: 30px;
+      margin-top: 5px;
+      dt,
+      dd {
+        cursor: pointer;
+        padding-left: 30px;
+
+        font-family: $en-font;
+      }
+
+      dt,
+      dt > a {
+        @include font(16px, 60px, 50);
+        display: inline;
+        transition: 0.3s;
+      }
+
+      dt:hover,
+      dt > a:hover {
+        color: #888;
+      }
+
+      dt {
+        &::before {
+          content: "";
+          position: relative;
+          display: inline-block;
+          top: 0px;
+          border-right: 1px solid $red;
+          border-bottom: 2px solid $red;
+          width: 0px;
+          height: 10px;
+          transform: rotate(90deg);
+          margin-right: 20px;
+          transition: 0.3s;
+        }
+      }
+      dd {
+        border-bottom: 1px solid gray;
+        padding-bottom: 5px;
+        min-height: 0em;
+        height: 0;
+        transition: 0.3s;
+      }
+      dd > a {
+        @include font(15px, 1.5, 50);
+        padding-left: 35px;
+        height: 0em;
+        opacity: 0;
+        display: block;
+        transition: 0;
+        pointer-events: none;
+        padding-top: 10px;
+        padding-bottom: 30px;
+        &:last-of-type {
+          padding-bottom: 50px;
+        }
+      }
+
+      dd > a:hover {
+        color: #888;
+      }
+
+      dt.click--on + dd {
+        min-height: 2em;
+        transition: 0.3s;
+        height: auto;
+        > a {
+          opacity: 1;
+          pointer-events: auto;
+          height: 2em;
+        }
+      }
+
+      dt.click--on {
+        &::before {
+          transform: rotate(270deg);
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}
+
+@include sp {
+  .archive {
+    margin-bottom: 200px;
+    margin-top: -10px;
+    .ttl {
+      @include font(20px * 1.78, 40px * 1.78, 50);
+      border-bottom: 1px solid $red;
+      color: $red;
+      width: 380px * 1.78;
+    }
+
+    dl {
+      width: 380px * 1.78;
+      min-height: 30px * 1.78;
+      margin-top: 5px * 1.78;
+      dt,
+      dd {
+        cursor: pointer;
+        padding-left: 30px * 1.78;
+        font-family: $en-font;
+      }
+
+      dt,
+      dt > a {
+        @include font(16px * 1.78, 70px * 1.78, 50);
+        display: inline;
+        transition: 0.3s;
+      }
+
+      dt:hover,
+      dt > a:hover {
+        color: #888;
+      }
+
+      dt {
+        &::before {
+          content: "";
+          position: relative;
+          display: inline-block;
+          top: 0px;
+          border-right: 1px solid $red;
+          border-bottom: 2px solid $red;
+          width: 0px;
+          height: 10px * 1.78;
+          transform: rotate(90deg);
+          margin-right: 20px * 1.78;
+          transition: 0.3s;
+        }
+      }
+      dd {
+        border-bottom: 1px solid gray;
+        min-height: 0em;
+        height: 0;
+        transition: 0.3s;
+      }
+      dd > a {
+        @include font(15px * 1.78, 1.5, 50);
+        padding-left: 35px * 1.78;
+        height: 0em;
+        opacity: 0;
+        display: block;
+        transition: 0;
+        pointer-events: none;
+        padding-top: 20px * 1.78;
+        padding-bottom: 40px * 1.78;
+        &:last-of-type {
+          padding-bottom: 60px * 1.78;
+        }
+      }
+
+      dd > a:hover {
+        color: #888;
+      }
+
+      dt.click--on + dd {
+        min-height: 2em;
+        transition: 0.3s;
+        height: auto;
+        > a {
+          opacity: 1;
+          pointer-events: auto;
+          height: 2em;
+        }
+      }
+
+      dt.click--on {
+        &::before {
+          transform: rotate(270deg);
+          transition: 0.3s;
+        }
+      }
+    }
+  }
+}

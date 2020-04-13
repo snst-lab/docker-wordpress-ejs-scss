@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <%- include('_headMeta.ejs', { modifier:basename}) %>
+  </head>
+  <body class="<%- basename %>">
+    <%- include('_bodyAfterBegin.ejs', { modifier: basename }) %>
+    <article class="lq__body">
+      <%- include('_header.ejs', { modifier: basename}) %>
+      <main>
+
+
+      </main>
+      <%- include('_footer.ejs', { modifier: basename }) %>
+    </article>
+    <%- include('_bodyBeforeEnd.ejs', { modifier: basename}) %>
+  </body>
+</html>

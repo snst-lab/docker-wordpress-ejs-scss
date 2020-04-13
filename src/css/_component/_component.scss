@@ -1,0 +1,115 @@
+@charset "UTF-8";
+@import "archive", "arrow", "inputs", "loader", "pagenavi", "popup", "slider";
+
+//ポップアップ・ローダー用全画面オーバーレイ
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.loader{
+  >*{
+    @include center;
+    margin-top:-5vw;
+    margin-left:-5vw;
+  }
+}
+
+@mixin pulse($size, $color, $border-color) {
+  position: absolute;
+  width: $size;
+  height: $size;
+
+  border-radius: 50%;
+  border: 1px solid $border-color;
+  animation: pulse 2s infinite;
+  transition: 1s;
+
+  @keyframes pulse {
+    0% {
+      transform: scale(0.25);
+      opacity: 1;
+      background-color: transparent;
+    }
+    95% {
+      transform: scale(1.5);
+      opacity: 0;
+      background-color: $color;
+    }
+    100% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+  }
+}
+
+@mixin ttl() {
+  b {
+    display: inline-block;
+    font-family: $en-font;
+    @include font_pc(25px, 25px, 80, bold);
+    @include font_sp(60px, 60px, 80, bold);
+    color: $red;
+  }
+  small {
+    display: inline-block;
+    padding-left: 10px;
+    vertical-align: top;
+    @include font_pc(16px, 25px, 50, normal);
+    @include font_sp(35px, 60px, 50, normal);
+    color: $red;
+  }
+}
+
+.copy01 {
+  display: block;
+  @include font_pc(21px, 2, 30, 500);
+  @include font_sp(30px, 1.7, 30, 700);
+}
+
+@mixin btn01($fontsize: 20px, $width: 200px, $height: 3em, $color: $blue, $bgcolor: white, $arrow: 1) {
+  @include font($fontsize, $height, 100, 700);
+  cursor: pointer;
+  box-sizing: content-box;
+  background: $bgcolor;
+  color: $color;
+  width: $width;
+  height: $height;
+  display: inline-block;
+  text-align: center;
+  border-radius: $height * 0.55;
+  position: relative;
+  border: 0.1em solid $bgcolor;
+  transition: 0.3s;
+  @include ie {
+    line-height: $height * 1.1;
+  }
+  &:hover {
+    background: $color;
+    color: $bgcolor;
+  }
+  &:after {
+    @if $arrow == 0 {
+      display: none;
+    }
+
+    content: "";
+    position: absolute;
+    margin-top: $height * 0.37;
+    margin-left: auto;
+    right: 1em;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: $height * 0.14 0 $height * 0.14 $height * 0.16;
+    border-color: transparent transparent transparent $color;
+    transition: 0.3s;
+  }
+  &:hover:after {
+    transform: translateX(0.2em);
+    border-color: transparent transparent transparent $bgcolor;
+  }
+}

@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+@mixin webkit {
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    @content;
+  }
+}
+
+@mixin ie {
+  @media screen\0 {
+    @content;
+  }
+}
+
+@mixin edge {
+  @supports (-ms-ime-align: auto) {
+    @content;
+  }
+}
+
+@mixin firefox {
+  @-moz-document url-prefix() {
+    @content;
+  }
+}

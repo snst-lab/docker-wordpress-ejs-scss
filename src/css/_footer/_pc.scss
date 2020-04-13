@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  height: 350px;
+  position: relative;
+  width: 100%;
+  background: $navy;
+
+  .foot_logo {
+    position: absolute;
+    top: 60px;
+    left: 400px;
+    a {
+      @include font(18px, 1.5, 250, 500);
+      color: white;
+    }
+  }
+
+  .foot_address {
+    position: absolute;
+    color: white;
+    top: 110px;
+    left: 400px;
+    @include font(15px, 1.6, 50, 300);
+  }
+
+  .foot_badge {
+    position: absolute;
+    top: 190px;
+    left: 400px;
+  }
+
+  .foot_menu {
+    position: absolute;
+    top: 68px;
+    left: 880px;
+    z-index: $header-zindex - 1;
+    width: auto;
+    display: flex;
+
+    > li {
+      top: 0;
+      &:nth-of-type(1) {
+        width: 180px;
+      }
+      &:nth-of-type(2) {
+        width: 170px;
+      }
+      &:nth-of-type(3) {
+        width: 180px;
+      }
+      &:nth-of-type(4) {
+        width: 180px;
+      }
+
+      > a {
+        @include font(16px, 30px, 100, 300);
+        text-align: left;
+        color: white;
+        height: 35px;
+      }
+      > p {
+        width: inherit;
+        line-height: inherit;
+        > a {
+          width: inherit;
+          color: white;
+          height: 28px;
+          @include font(14px, 28px, 100, 300);
+          display: block;
+          &::before {
+            content: "-";
+            display: inline-block;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .foot_copyright {
+    @include font(22px, 25px, 100);
+    transform: scale(0.5);
+    position: absolute;
+    display: block;
+    width: $pc-width;
+    margin-top: auto;
+    top: 240px;
+    height: 25px;
+    line-height: 20px;
+    text-align: center;
+    background: transparent;
+    color: white;
+  }
+
+  .scrollToTop {
+    @include scrollToTop(56px, white, $navy);
+    right: 450px;
+  }
+}

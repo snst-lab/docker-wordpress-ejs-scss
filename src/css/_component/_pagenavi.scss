@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+//ページナビ
+.pagenavi--archive {
+    $size: 40px;
+    @include font(17px, $size);
+    display: flex;
+    justify-content: space-between;
+  
+    .total {
+      height: $size;
+      background: #535353;
+      padding: 0 15px;
+      margin: 0 2px;
+      a {
+        color: white;
+      }
+  
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  
+    .next,
+    .prev {
+      a {
+        color: $red;
+        position: relative;
+        > span {
+          position: absolute;
+        }
+      }
+    }
+    .next {
+      a {
+        > span {
+          @include arrow__circle(20px, $red, white, 90deg, 1);
+          top: 3px;
+          right: -25px;
+        }
+      }
+  
+      &:hover {
+        opacity: 0.8;
+  
+        span {
+          transform: translateX(2px) rotate(90deg);
+        }
+      }
+    }
+    .prev {
+      a {
+        > span {
+          @include arrow__circle(20px, $red, white, -90deg, 1);
+          top: 3px;
+          left: -30px;
+        }
+      }
+  
+      &:hover {
+        opacity: 0.8;
+  
+        span {
+          transform: translateX(-2px) rotate(-90deg);
+        }
+      }
+    }
+    .pagenum {
+      display: flex;
+      .page {
+        display: block;
+        width: $size;
+        height: $size;
+        margin: 0 $size * 0.1;
+        background: transparent;
+        text-align: center;
+        color: black;
+        border-radius: 50%;
+        transition: 0.3s;
+      }
+  
+      .current {
+        background: $red;
+        color: white;
+      }
+  
+      .page:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  
+  //ページナビ
+  .pagenavi--single {
+    $size: 40px;
+    @include font(17px, $size);
+    display: flex;
+    justify-content: space-between;
+  
+    .next,
+    .prev {
+      height: $size;
+      padding: 0 15px;
+      margin: 0 2px;
+      a {
+        color: $red;
+        position: relative;
+        > span {
+          position: absolute;
+        }
+      }
+    }
+  
+    .next {
+      a {
+        > span {
+          @include arrow__circle(20px, $red, white, 90deg, 1);
+          top: 3px;
+          right: -25px;
+        }
+      }
+      &:hover {
+        opacity: 0.8;
+        span {
+          transform: translateX(2px) rotate(90deg);
+        }
+      }
+    }
+  
+    .prev {
+      a {
+        > span {
+          @include arrow__circle(20px, $red, white, -90deg, 1);
+          position: absolute;
+          top: 3px;
+          left: -30px;
+        }
+        &:hover {
+          opacity: 0.8;
+          span {
+            transform: translateX(-2px) rotate(-90deg);
+          }
+        }
+      }
+    }
+    .pagenum {
+      display: flex;
+      .page {
+        display: block;
+        width: $size;
+        height: $size;
+        margin: 0 $size * 0.1;
+        background: transparent;
+        text-align: center;
+        color: black;
+        border-radius: 50%;
+        transition: 0.3s;
+      }
+  
+      .current {
+        background: $red;
+        color: white;
+      }
+  
+      .page:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  

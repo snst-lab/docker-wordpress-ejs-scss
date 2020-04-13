@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+@mixin slider(
+    $length: 4,
+    $width: 1920px,
+    $height: 620px,
+    $item-width: 1500px,
+    $item-margin: 10px,
+    $transition: 1s,
+    $arrow-size: 80px,
+    $arrow-color1: #555,
+    $arrow-color2: white,
+    $navi-color1: #555,
+    $navi-color2: orange
+  ) {
+    position: relative;
+    height: $height;
+  
+    $item-client-width: $item-width + $item-margin * 2;
+    $item-left: ($width - $item-client-width)/2;
+    $left-arrow--left: $item-left - $arrow-size / 2;
+    $left-arrow--right: $item-left + $item-client-width - $arrow-size / 2;
+  
+    .slider__arrow--left,
+    .slider__arrow--right {
+      cursor: pointer;
+      display: block;
+      position: absolute;
+      top: ($height - $arrow-size)/2;
+    }
+    .slider__arrow--left {
+      left: $left-arrow--left;
+      @include arrow__circle($size: $arrow-size, $bgcolor: $arrow-color1, $arrowcolor: $arrow-color2, $rotate: 180deg,$triangle:0);
+    }
+    .slider__arrow--right {
+      left: $left-arrow--right;
+      @include arrow__circle($size: $arrow-size, $bgcolor: $arrow-color1, $arrowcolor: $arrow-color2, $rotate: 0deg);
+    }
+  
+    .slider__navi {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 97%;
+      display: inline-block;
+      width: auto;
+  
+      > span {
+        cursor: pointer;
+        display: inline-block;
+        background: $navi-color1;
+        height: 2px;
+        margin: 0 2px;
+        width: 25px;
+        transition: 0.2s;
+        &:hover {
+          background: $navi-color2;
+        }
+        &.active {
+          background: $navi-color2;
+        }
+      }
+    }
+  
+    .slider__content {
+      width: $item-client-width * 3 * $length;
+      height: $height;
+      position: absolute;
+      background: white;
+      left: 0;
+      transition: $transition;
+      overflow: hidden;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      .slider__item {
+        display: block;
+        position: absolute;
+        width: $item-client-width;
+        height: $height;
+        left: 0;
+        overflow: hidden;
+        transition: $transition;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+  
+        @for $i from 1 through 20 {
+          &:nth-of-type(#{$i}) {
+            left: ($i - 1) * $item-client-width;
+          }
+        }
+        img {
+          width: $item-width;
+          display: block;
+          margin: 0 $item-margin;
+        }
+      }
+    }
+  }
+  
