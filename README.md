@@ -1,4 +1,4 @@
-XXXのコーポレートサイト
+XXXのWebサイト
 ==
 https://xxx.com/
 
